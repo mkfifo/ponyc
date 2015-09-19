@@ -67,9 +67,9 @@ trait Integer[A: Integer[A] box] val is Real[A]
   fun rotl(y: A): A => (this << y) or (this >> (bitwidth() - y))
   fun rotr(y: A): A => (this >> y) or (this << (bitwidth() - y))
 
-trait _SignedInteger[A: _SignedInteger[A,C] box,
-    C: _UnsignedInteger[C] box] val is Integer[A]
-  fun abs(): C
+trait _SignedInteger[A: _SignedInteger[A,B] box,
+    B: _UnsignedInteger[B] box] val is Integer[A]
+  fun abs(): B
   fun string(fmt: IntFormat = FormatDefault,
     prefix: NumberPrefix = PrefixDefault, prec: U64 = -1, width: U64 = 0,
     align: Align = AlignRight, fill: U32 = ' '): String iso^
